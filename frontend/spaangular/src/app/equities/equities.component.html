@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="alert alert-warning" *ngIf="message != ''">
+        {{message}}
+    </div>
+    <H1>
+        Below are the list of equities invested in:
+    </H1>
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>UPDATE/SAVE</th>
+                <th>DELETE/CANCEL</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let equity of equitiesList">
+                <td><input type="text" name="id" [disabled]="true" [(ngModel)]="equity.id"/></td>
+                <td><input type="text" name="name" [disabled]="currentEquity!= null && equity.id===currentEquity.id? false: true" [(ngModel)]="equity.name" required="required" minlength="1" autofocus/></td>
+                <td><input type="text" name="quantity" [disabled]="currentEquity!= null && equity.id===currentEquity.id? false: true" [(ngModel)]="equity.quantity" required="required" minlength="1"/></td>
+                <td><input type="text" name="price" [disabled]="currentEquity!= null && equity.id===currentEquity.id? false: true" [(ngModel)]="equity.price" required="required" minlength="1"/></td>
+                <td>
+                    <button class="btn btn-success" *ngIf="currentEquity== null" (click)="updateEquity(equity)">UPDATE</button>
+                    <button class="btn btn-success" *ngIf="currentEquity!= null && equity.id===currentEquity.id" (click)="saveEquity()">SAVE</button>
+                </td>
+                <td>
+                    <button class="btn btn-warning" *ngIf="currentEquity== null" (click)="deleteEquity(equity.id)">DELETE</button>
+                    <button class="btn btn-warning" *ngIf="currentEquity!= null && equity.id===currentEquity.id" (click)="cancelEquity(equity.id)">CANCEL</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    <div>
+        <button class="btn btn-success" *ngIf="currentEquity==null" (click)="addEquity()">Add</button>
+    </div>
+</div>
+
+
