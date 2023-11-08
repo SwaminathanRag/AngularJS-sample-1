@@ -16,22 +16,22 @@ export class JwtAuthenticationService {
       password
     })
       .pipe(map(data => 
-      {    
+      {
         sessionStorage.setItem('authenticatedUser', username);
-        sessionStorage.setItem('basicHeader', ' Bearer ' + data.token);
+        sessionStorage.setItem('authenticatedUserHeader', this.getHttpAuthenticationHeader(data.token));
         return data;
       }
     ));
   }
 
   getHttpAuthenticationHeader(token: string) {
-    return ' Bearer ' + token;
+    return 'Bearer ' + token;
   }
 
   getBasicHeader(): string {
-    const header = sessionStorage.getItem('basicHeader');
-    if(header != null) {
-      return header;
+    let header = sessionStorage.getItem('authenticatedUserHeader');
+    if(header != null || header != undefined) {
+      return header.toString();
     } else {
       return '';
     }
@@ -39,11 +39,10 @@ export class JwtAuthenticationService {
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticatedUser');
-    return !(user === null);
+    return !(user === null || user == undefined);
   }
 
   logout() {
-    sessionStorage.removeItem('authenticatedUser');
-    sessionStorage.removeItem('basicHeader');
+    sessionStorage.clear();
   }
 }

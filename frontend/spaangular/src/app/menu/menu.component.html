@@ -4,12 +4,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <!--TODO: update to actual logged in user -->
-                <li class="nav-item nav-link"><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/home/spaangular" class="nav-link">Home</a></li>
-                <li class="nav-item nav-link"><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/equities/spaangular" class="nav-link">Equities</a></li>
+                <li class="nav-item nav-link"><a *ngIf="jwtAuthenticationService.isUserLoggedIn()" routerLink="/home/spaangular" class="nav-link">Home</a></li>
+                <li class="nav-item nav-link"><a *ngIf="jwtAuthenticationService.isUserLoggedIn()" routerLink="/equities/spaangular" class="nav-link">Equities</a></li>
             </ul>
             <ul class="navbar-nav mr-auto navbar-collapse justify-content-end">
-                <li class="nav-item nav-link"><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
-                <li class="nav-item nav-link"><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+                <li class="nav-item nav-link"><a *ngIf="!jwtAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+                <li class="nav-item nav-link"><a *ngIf="jwtAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
             </ul>
         </div>
     </nav>

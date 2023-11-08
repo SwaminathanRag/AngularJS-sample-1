@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HttpInterceptorBasicAuthService } from './service/http-interceptor-basic-auth.service';
+import { HttpInterceptorJwtAuthService } from './service/http-interceptor-jwt-auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpInterceptorBasicAuthService } from './service/http-interceptor-basi
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true }
+    //{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorJwtAuthService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

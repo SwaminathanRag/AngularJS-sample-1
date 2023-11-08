@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
+import { JwtAuthenticationService } from '../service/jwt-authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,8 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  constructor(public hardcodedAuthenticationService: HardcodedAuthenticationService) {
+  constructor(public hardcodedAuthenticationService: HardcodedAuthenticationService,
+    public jwtAuthenticationService: JwtAuthenticationService) {
 
   }
 }
