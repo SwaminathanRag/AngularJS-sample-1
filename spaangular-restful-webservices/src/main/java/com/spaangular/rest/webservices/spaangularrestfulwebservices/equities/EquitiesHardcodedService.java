@@ -37,7 +37,7 @@ public class EquitiesHardcodedService {
 	}
 	
 	public boolean save(Equity updateEquity) {
-		Equity matchedEquity = findById(updateEquity.getId());
+		Equity matchedEquity = findById(updateEquity.getId().intValue());
 		if(matchedEquity != null) {
 			matchedEquity.setName(updateEquity.getName());
 			matchedEquity.setQuantity(updateEquity.getQuantity());
@@ -48,7 +48,7 @@ public class EquitiesHardcodedService {
 	}
 	
 	public Equity add(Equity newEquity) {
-		newEquity.setId(++equityCounter);
+		newEquity.setId(Long.valueOf(++equityCounter));
 		hardcodedEquities.add(newEquity);
 		return newEquity;
 	}

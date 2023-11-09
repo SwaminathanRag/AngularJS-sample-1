@@ -3,13 +3,20 @@ package com.spaangular.rest.webservices.spaangularrestfulwebservices.equities;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Equity {
-	private int id;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String name;
 	private int quantity;
 	private BigDecimal price;
 	
-	public Equity(int id, String name, int quantity, BigDecimal price) {
+	public Equity(long id, String name, int quantity, BigDecimal price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,11 +28,11 @@ public class Equity {
 		super();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
