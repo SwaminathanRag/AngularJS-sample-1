@@ -38,14 +38,14 @@ export class LoginComponent {
     //    this.invalidCredential = true
     //  }
     //)
-    this.jwtAuthenticationService.authenticate(this.username, this.password).subscribe(response => {
+    this.jwtAuthenticationService.authenticate(this.username, this.password).subscribe({next: response => {
       console.log('Successful')
       this.router.navigate(['home', this.username])
       this.invalidCredential = false
     },
-    error => {
+    error: error => {
       console.log('error' + error)
       this.invalidCredential = true
-    })
+    }})
   }
 }

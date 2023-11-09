@@ -27,8 +27,10 @@ export class EquitiesComponent implements OnInit {
   }
   refreshEquities() {
     this.equitiesService.getEquitiesForUser(this.userName).subscribe(
-      response => this.handleSuccessResponse(response),
-      error => this.handleErrorResponse(error)
+      {
+      next: response => this.handleSuccessResponse(response),
+      error: error => this.handleErrorResponse(error)
+      }
     );  
   }
 
